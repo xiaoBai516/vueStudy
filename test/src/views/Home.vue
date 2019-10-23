@@ -1,18 +1,16 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="home">
+		<directive  title="指令模块"/>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+	import directive from '@/components/directive.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+	export default {
+		name: 'home',
+		components: {
+			directive
+		}
+	}
 </script>
