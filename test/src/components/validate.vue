@@ -64,10 +64,10 @@
     import * as fmt from "@/utils"
     export default {
         data () {
+            //模拟自定义表单验证
             const validatePhone = (rule, value, callback) => {
                 if(!fmt.muRules.comparePhone(value)){
                     callback('格式错误');
-                    console.log('初始化')
                 }
                 callback();
             };

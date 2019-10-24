@@ -99,7 +99,6 @@ export function getAge(birth) {
 export function comparePhone(phone) {
     //手机号规则
     const phoneRegex = /^[1][3,4,5,7,8][0-9]{9}$/;
-    console.log('手机号',!phoneRegex.test(phone))
     if (!phoneRegex.test(phone)) {
         return false;
     } else {
