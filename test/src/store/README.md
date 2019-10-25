@@ -28,7 +28,6 @@ B.数据：state
 
 C.引用方法
 
-
 /*vuex 集中的方法*/
 import { mapGetters, mapState } from "vuex";
 
@@ -48,8 +47,7 @@ import { mapGetters, mapState } from "vuex";
       doneCount: 'doneTodosCount'
     })
 2. mapState
-
- 接收值，有2种方式
+3. 接收值，有2种方式
     a. this.$store.state.count
     b. //在computed接收 count 的值 这边的值是实时获取的
         computed:{
@@ -126,7 +124,32 @@ f.页面组件显示
     }
 </script>
 
+注意：
+如果不使用 mapActions 的话，调用action需要时使用 this.$store.dispatch
+<template>
+    <div>
+        <h1>vuex:{{count}}</h1>
+        <p>{{count}}是{{isOdd}}</p>
+        <div><button @click="increment">增加+</button></div>
+    </div>
+</template>
+<script type="text/javascript">
+export default {
+    data() {
+        return {
 
+        }
+    },
+    created() {
+        this.test();
+    },
+    methods: {
+        increment(){
+           this.$store.dispatch('increment');
+        }
+    }
+}
+</script>
 
 /*****总结vuex****/
 优点：

@@ -12,16 +12,16 @@ Vue.config.productionTip = false
 directives.init(Vue)
 
 //登录拦截
-router.beforeEach((to, from, next) => {
-    console.log('state',store.state)
-    if (store.state.userInfo || to.path === "/login") {
-        next()
-    } else {
-        next({
-            path: "/login"
-        })
-    }
-})
+// router.beforeEach((to, from, next) => {
+//     console.log('state',store.state)
+//     if (store.state.userInfo || to.path === "/login") {
+//         next()
+//     } else {
+//         next({
+//             path: "/login"
+//         })
+//     }
+// })
 new Vue({
 	router,
 	store,
