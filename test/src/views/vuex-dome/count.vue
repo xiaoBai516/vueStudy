@@ -1,7 +1,11 @@
 <template>
-    <div id="app">
-          <router-link to="/"></router-link> 
-        <router-view />
+    <div>
+        <h1>vuex:{{count}}</h1>
+        <p>{{count}}是{{isOdd}}</p>
+        <div><button @click="decrement">减少-</button></div>
+        <div><button @click="increment">增加+</button></div>
+        <div><button @click="clickOdd">只能偶数增加+</button></div>
+        <div><button @click="clickAsync">异步操作间隔1秒之后增加+</button></div>
     </div>
 </template>
 <script>
@@ -31,11 +35,3 @@
         }
     }
 </script>
-<style lang="scss">
-    #app {
-        font-family: 'Avenir', Helvetica, Arial, sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        color: #2c3e50;
-    }
-</style>

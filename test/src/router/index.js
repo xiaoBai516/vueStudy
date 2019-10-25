@@ -4,19 +4,39 @@ import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [{
-		path: '/',
-		name: 'home',
-		component: Home
-	},
-	// {
-	// 	path: '/about',
-	// 	name: 'about',
-	// 	// route level code-splitting
-	// 	// this generates a separate chunk (about.[hash].js) for this route
-	// 	// which is lazy-loaded when the route is visited.
-	// 	component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
-	// }
+const routes = [
+ //    {
+	// 	path: '/',
+	// 	name: 'home',
+	// 	component: Home
+	// },
+    // *** vuex 的案例 开始/
+    {
+        path: "/count",
+        name: "count",
+        component: () => import("../views/vuex-dome/count.vue")
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: () => import("../views/vuex-dome/login.vue")
+    },
+    {
+        path: "/",
+        name: "index",
+        component: () => import("../views/vuex-dome/index.vue")
+    },
+    {
+        path: "/userCenter",
+        name: "userCenter",
+        component: () => import("../views/vuex-dome/userCenter.vue")
+    },
+    {
+        path: "/course/:id",
+        name: "course",
+        component: () => import("../views/vuex-dome/course.vue")
+    }
+    // *** vuex 的案例 结束/
 ]
 
 const router = new VueRouter({

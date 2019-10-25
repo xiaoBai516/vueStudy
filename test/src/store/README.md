@@ -1,0 +1,145 @@
+/*基本的方法解析*/
+1. dispath:操作行为触发方法，是唯一能执行action的方法。
+
+2. action：操作行为处理模块。
+负责处理vue components 接收到的所有交互行为。包含同步/异步操作，支持多个同名方法，、
+按照注册的顺序依次触发。向后台API请求的操作就在这个模块中进行，包括触发其他action以及提交mutation的操作。
+该模块提供了promise的封装，以支持action的链式触发
+
+3. commit：状态改变提交操作方法。对mutation进行提交，是唯一能执行mutation的方法。
+
+4. mutation：状态改变操作方法，是vuex修改state的唯一推荐方法，其他修改方式在严格模式下将会报错。该方法只能进行
+同步操作，且方法名只能全局唯一。操作之中会有一些hook暴露出来，以进行state的监控等
+
+
+5. state：页面状态管理容器对象。集中存储vue components 中data对象的零散数据，全局唯一，，以进行统一的状态
+管理。页面显示所需的数据从该对象中进行读取，利用vue的细粒度数据响应机制来进行高效的状态更新。
+
+6. getters:state对象读取方法。图中没有单独列出该模块。应该被包含在render中，vue components通过该方法读取全局state对象
+vue组件接收交互行为，调用dispatch方法触发action相关处理，若页面状态需要改变，则调用commit方法提交mutation修改state。
+通过getters获取state新值，重新渲染vue component，界面随之更新。
+
+总结：
+A. 操作数据
+    action:只负责做相应的跳转操作
+    mutation：修改数据
+
+B.数据：state
+
+C.引用方法
+
+
+/*vuex 集中的方法*/
+import { mapGetters, mapState } from "vuex";
+
+1. mapGetters:仅仅是将 store 中的 getter 映射到局部计算属性
+    computed: {
+        // 使用对象展开运算符将 getter 混入 computed 对象中
+        ...mapGetters([
+            'memberInfo',
+            'anotherGetter',
+            // ...
+        ])
+    }
+    A.如果你想将一个 getter 属性另取一个名字，使用对象形式：
+
+    mapGetters({
+      // 映射 `this.doneCount` 为 `store.getters.doneTodosCount`
+      doneCount: 'doneTodosCount'
+    })
+2. mapState
+
+ 接收值，有2种方式
+    a. this.$store.state.count
+    b. //在computed接收 count 的值 这边的值是实时获取的
+        computed:{
+            count(){
+              return this.$store.state.count 
+            }
+        }
+        
+        
+/*简单的用法*/
+state设置变量，action提交方法（commit("increment")给 mutations ,mutation 对state进行修改操作（mutation 唯一一个可以修改state的方法），然后又getter 映射到组件页面上
+state -》 action -》mutations -> getter ->页面组件
+
+a.设置变量
+const state = {
+    count:10
+}
+
+b.提交可以修改state的方法
+const action = {
+    increment({commit}){
+        commit("increment");//提交给 mutations 里面操作
+    }
+}
+
+c.修改state
+const mutation = {
+    increment(state){
+        state.count++;//对state进行操作
+    }
+}
+
+d.把state的值触底给组件
+const getter = {
+    count(state){
+        return state.count
+    }
+}
+
+e.把上面的暴露出来
+const store = new Vuex.Store({
+    state,
+    getters,
+    actions,
+    mutations,
+})
+
+export default store
+
+f.页面组件显示
+<template>
+    <div id="app">
+        {{count}}
+        <button @click="increment">增加+</button>
+    </div>
+</template>
+<script>
+    import {mapGetters, mapState,mapActions} from 'vuex'
+    export default {
+        data() {
+            return {
+            }
+        },
+        computed: {
+            ...mapGetters([ //映射，获取state的值
+                "count",
+            ])
+        },
+        methods: {
+            ...mapActions([//这是执行方法
+                "increment",
+            ])
+        }
+    }
+</script>
+
+
+
+/*****总结vuex****/
+优点：
+1. 组件交互非常方便
+2. 后期的代码维护量少
+3. 数据操作起来非常便利
+
+缺点：
+1. 初期搭建麻烦
+2. 代码分解太过厉害，导致看一个功能模块可能要走很多流程
+3. 页面刷新之后数据没了
+
+localstorage也可以保存，但是保存不重要的数据 cookie/session 刷新可以保存。vuex 刷新不能保持
+
+/*vuex 尴尬*/
+小项目不用，刷新之后数据还原
