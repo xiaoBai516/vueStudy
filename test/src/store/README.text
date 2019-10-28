@@ -151,6 +151,10 @@ export default {
 }
 </script>
 
+简单的理解：当vue组件(vue components)发生变化的(比如用户触发点击事情，需要改变vuex状态)——》
+通过dispatch提交action(这里面会很多的函数，需要dispatch触发这里的事情函数)——》通过 store.commit 方法触发状态变更(mutation的方法)  ——》
+mutation改变state状态——》state状态改变之后，getter映射渲染vue 组件  
+
 /*****总结vuex****/
 优点：
 1. 组件交互非常方便

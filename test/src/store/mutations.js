@@ -1,20 +1,24 @@
 /*
 mutations:状态改变操作方法。是vuex修改state的唯一推荐方法，
 */
+import * as types from './mutations_types';
 export default {
     // count.vue案例的变量 count
-    increment(state){
+    [types.INCREMENT](state){
         state.count++;//对state进行操作
     },
-    decrement(state){
+    [types.DECREMENT](state){
         state.count--;
     },
-    // Muke 账号 课程的案例
-    login(state, v) {
-        state.userInfo = v
+    [types.REPROMISE](state, payload){
+        state.requestData = payload
     },
-    setMemberInfo(state, v) {
-        state.userStatus = v.userStatus
-        state.vipLevel = v.vipLevel
+    // Muke 账号 课程的案例
+    [types.LOGIN](state, payload) {
+        state.userInfo = payload
+    },
+    [types.SETMEMBERINFO](state, payload) {
+        state.userStatus = payload.userStatus
+        state.vipLevel = payload.vipLevel
     },
 }

@@ -11,6 +11,9 @@ export default {
     isOdd(state){
         return state.count % 2 ==0?'偶数':'奇数'
     },
+    requestData(state){
+        return state.requestData
+    },
     // Muke 账号 课程的案例
     memberInfo(state) {
         switch (state.userStatus) {
