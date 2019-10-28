@@ -162,7 +162,8 @@ export default {
 2. 代码分解太过厉害，导致看一个功能模块可能要走很多流程
 3. 页面刷新之后数据没了
 
-localstorage也可以保存，但是保存不重要的数据 cookie/session 刷新可以保存。vuex 刷新不能保持
+localstorage也可以保存，刷新也可以保存(但是保存不重要的数据)
+cookie/session 刷新可以保存。vuex 刷新不能保持
 
 /*vuex 尴尬*/
 小项目不用，刷新之后数据还原
