@@ -44,7 +44,8 @@
             asyncFn(){
                 console.log('点击')
                 let param = {
-                    appopenid: "oYpo44xBPLnkuzEEV1x3D5JdtLq4"
+                    // appopenid: "oYpo44xBPLnkuzEEV1x3D5JdtLq4"
+                    name:'cedric'
                 }
                 //1.Promise 回调
                 // this.requestPromise(param).then(res => {

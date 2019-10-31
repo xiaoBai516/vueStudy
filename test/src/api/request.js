@@ -6,7 +6,15 @@ import * as api from './interfaces';
  * @returns data
  */
 export function getPatiDetailByAppFn(callback, params) {
-    axios.post(api.getPatiDetailByApp, params).then(res => {
+    // axios.post(api.getPatiDetailByApp, params).then(res => {
+    //     if (res.data.success == true) {
+    //         let data = res.data.data;
+    //         callback(data);
+    //     }else{
+    //          callback(res.data);
+    //     }
+    // });
+    axios.get("/query/rest/pc-direct/page/queryNavigators").then(res => {
         if (res.data.success == true) {
             let data = res.data.data;
             callback(data);
@@ -14,4 +22,6 @@ export function getPatiDetailByAppFn(callback, params) {
              callback(res.data);
         }
     });
+    // window.location.href ="/queryNavigators";
 }
+
