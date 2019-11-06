@@ -10,6 +10,12 @@ const routes = [
 	// 	name: 'home',
 	// 	component: Home
 	// },
+     // *** 本地数据获取*/
+    {
+        path: "/localData",
+        name: "localData",
+        component: () => import("../views/localData/index.vue")
+    },
     // *** vuex 的案例 开始/
     {
         path: "/count",
@@ -37,6 +43,7 @@ const routes = [
         component: () => import("../views/vuex-dome/course.vue")
     }
     // *** vuex 的案例 结束/
+
 ]
 
 const router = new VueRouter({

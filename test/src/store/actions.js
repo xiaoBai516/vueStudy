@@ -79,6 +79,17 @@ export default {
             }, 1000)
         })
     },
+    
+    //三.本地请
+    getTest({commit}){
+        return new Promise((resolve, reject) => {
+            request.getPatiDetailByAppFn(payload => {
+                console.log('请求',payload)
+                commit(types.REPROMISE, payload);
+                resolve(payload)
+            }, params);
+        })
+    }
 }
 
 /*
