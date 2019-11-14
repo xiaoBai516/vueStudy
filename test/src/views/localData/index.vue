@@ -108,6 +108,17 @@
                 // console.log("数据类型是"+typeof bb+";返回值是"+bb); //打印结果是:数据类型是object;返回值是2,4,6
                 
                 /*
+                
+                过滤数组集合
+                let solders=[
+                  {"id":"1","name":"小吴"},
+                  {"id":"2","name":"小时"},
+                  {"id":"3","name":"翔子"}
+               ]
+               let  result = _Qs.filter(solders,function(res) {
+                     return res.id != 1;
+                });
+                console.log(result)//[ {"id":"2","name":"小时"},{"id":"3","name":"翔子"}]
                 5.findWhere   在list中逐项查找，返回第一个通过,如果没有则将返回undefined
                 */
                 var dataMapfindWhere = [{"id":"1",'name':"夏雨","sex":"21"},{"id":"2",'name':"球雨","sex":"22"},{"id":"3",'name':"春雨","sex":"21"}];
