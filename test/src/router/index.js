@@ -18,7 +18,7 @@ const routes = [
      },
      // *** 本地数据获取*/
      {
-          path: "/localData",
+          path: "/",
           name: "localData",
           component: () => import("../views/localData/index.vue")
      },

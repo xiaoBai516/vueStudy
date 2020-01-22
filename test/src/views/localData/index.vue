@@ -62,14 +62,18 @@
                  /*
                 2.each
                 */
-                var dataMap = [{"id":"1",'name':"夏雨"},{"id":"2",'name':"球雨"},{"id":"3",'name':"春雨"}];
-                _Qs.map(dataMap,function(element, index, list) { 
+                var dataMap = [{"id":"1",'name':"夏雨","value":1},{"id":"2",'name':"球雨","value":2},{"id":"3",'name':"春雨","value":4}];
+                var result =  _Qs.map(dataMap,function(element, index, list) { 
                     //三个参数都是可选,位置固定,element是数组值,index是值在数组位置,list是整个数组
                     // console.log(element);    //打印出{"id":"1",'name':"夏雨"}
                     // console.log(index);        //打印出0 1 2 索引
                     // console.log(list);        //打印出数组
+                    element.value =  element.value+1;
+                    return element;
+
                 });
-                
+                console.log(result,dataMap,'map案例')
+                //打印出来  [{"id":"1",'name':"夏雨","value":2},{"id":"2",'name':"球雨","value":3},{"id":"3",'name':"春雨","value":5}]   [{"id":"1",'name':"夏雨","value":2},{"id":"2",'name':"球雨","value":3},{"id":"3",'name':"春雨","value":5}]   map案例
                 // 遍历对象 (可获取三个参数 value,key,list)
                 var data2Map = {
                     name1: "lili"
